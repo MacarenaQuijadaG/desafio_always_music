@@ -46,7 +46,32 @@ async function consultarPorRut(params) {
 
 // Función para editar los datos
 
+async function editar() { // falta parametros que se editaran
+    try { 
+      const res = await pool.query('UPDATE estudiantes SET columna = $1 WHERE id = $2', []); //falta parametros que se editaran
+      console.log(`Se actualizaron ${res.rowCount} registros en la tabla 'estudiantes'`);
+    } catch (error) {
+      console.error('Error al editar el registro en la tabla estudiantes:', error.message);
+    } finally {
+      await pool.end();
+    }
+  }
+
 // Función para eliminar
+
+async function eliminar() {
+    try {
+      const res = await pool.query('DELETE FROM estudiantes RETURNING *');
+  
+      // 
+      console.log(`Se elimino ${res.rowCount} de la tabla 'estudiantes'`);
+    } catch (error) {
+      console.error('Error al eliminar estudiante:', error.message);
+    } finally {
+      
+      await pool.end();
+    }
+  }
 
 // Manejo de comandos
 switch(comando) {
