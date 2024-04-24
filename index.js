@@ -45,34 +45,30 @@ async function consultarPorRut(params) {
 }
 
 // Función para editar los datos
-
-async function editar() { // falta parametros que se editaran
+async function editar(params) { 
+    const [nombre, rut, curso, nivel] = params; 
     try { 
-      const res = await pool.query('UPDATE estudiantes SET columna = $1 WHERE id = $2', []); //falta parametros que se editaran
-      console.log(`Se actualizaron ${res.rowCount} registros en la tabla 'estudiantes'`);
+      const res = await pool.query('UPDATE registro_actual SET nombre = $1, rut = $2, curso = $3, nivel = $4 ', [nombre, rut, curso, nivel]); 
+      console.log(`Se actualizó el registro con ID ${rut} en la tabla 'registro_actual'`);
     } catch (error) {
-      console.error('Error al editar el registro en la tabla estudiantes:', error.message);
+      console.error('Error al editar el registro en la tabla:', error.message);
     } finally {
-      await pool.end();
+        await pool.end();
     }
-  }
-
+}
 // Función para eliminar
 
 async function eliminar() {
     try {
-      const res = await pool.query('DELETE FROM estudiantes RETURNING *');
-  
-      // 
-      console.log(`Se elimino ${res.rowCount} de la tabla 'estudiantes'`);
-    } catch (error) {
-      console.error('Error al eliminar estudiante:', error.message);
-    } finally {
-      
-      await pool.end();
-    }
-  }
+        const res = await pool.query('DELETE FROM registro_actual RETURNING *');
 
+        console.log(`Se eliminaron ${res.rowCount} registros de la tabla 'registro_actual'`);
+    } catch (error) {
+        console.error('Error al eliminar registros de la tabla:', error.message);
+    } finally {
+        await pool.end();
+    }
+}
 // Manejo de comandos
 switch(comando) {
     case 'nuevo':
@@ -95,13 +91,13 @@ switch(comando) {
 }
 
 // Te dejo los comandos que yo utilice para probar los eventos que hice.
-// node index.js nuevo 'Juan Pérez' '12345678-9' 'Piano' 'Avanzado'
+// node index.js nuevo 'Juan Pérez' '12345678-9' 'Piano' '90'
 // node index.js consulta
 // node index.js consultarPorRut '12345678-9'
 
 
 // Estos faltan por hacer.
-// node index.js editar 'Juan Pérez' '12345678-9' 'Guitarra' 'Intermedio'
+// node index.js editar 'Juan Pérez' '12345678-9' 'Guitarra' '85'
 // node index.js eliminar '12345678-9'
 
 // En win es con "" y en linux con ''
