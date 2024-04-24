@@ -7,12 +7,12 @@ musicos de reconocimiento mundial, sin embargo, a pesar de lo mucho que ha creci
 el tiempo, nunca dejaron de utilizar excel como base de datos y han decidido cambiar esto
 por un desarrollo personalizado.
 En este desafio deberas desarrollar una aplicacion en Node que realice consultas a
-PostgreSQL con el paquete gpgh para:
-œ Agregar un nuevo estudiante.
-œ Consultar los estudiantes registrados.
-œ Consultar estudiante por rut.
-œ Actualizar la informacion de un estudiante.
-œ Eliminar el registro de un estudiante.
+PostgreSQL para:
+- Agregar un nuevo estudiante.
+- Consultar los estudiantes registrados.
+- Consultar estudiante por rut.
+- Actualizar la informacion de un estudiante.
+- Eliminar el registro de un estudiante.
 ## Visuales
 
 ![2](https://github.com/CC0ntreras/desafio_always_music/assets/50925916/74af4212-071c-4e05-ad2f-013a36e5ebb6)
@@ -28,6 +28,8 @@ Estas instrucciones te guiarán para obtener una copia de este proyecto en funci
 Lista de software y herramientas, incluyendo versiones, que necesitas para instalar y ejecutar este proyecto:
 
 -  "express": "^4.19.2",
+-  "node": "^18.0.4",
+-  "pg": "^8.11.5",
 
 
 ### Instalación 🔧
